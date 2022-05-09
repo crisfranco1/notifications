@@ -1,2 +1,2 @@
 # notifications
-tinsa
+Tinsa
