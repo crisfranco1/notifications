@@ -1,6 +1,7 @@
 package com.tinsa.notifications.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,11 @@ public class NotificationSettingController {
 	public ResponseEntity<NotificationSetting> create(@RequestBody NotificationSetting notificationSetting) {
 		NotificationSetting createdNotificationSetting = this.notificationService
 				.createNotificationSetting(notificationSetting);
-		return new ResponseEntity<>(createdNotificationSetting, HttpStatus.CREATED);
+		if (Objects.nonNull(createdNotificationSetting)) {
+			return new ResponseEntity<>(createdNotificationSetting, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
 
 	@GetMapping

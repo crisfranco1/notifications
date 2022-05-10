@@ -27,14 +27,14 @@ public class NotificationController {
 	public ResponseEntity<String> sendSmsNotification(@RequestBody SendNotificationRequest sendNotificationRequest)
 			throws IOException {
 		String answer = this.notificationService.sendSmsNotification(sendNotificationRequest);
-		return new ResponseEntity<>(answer, HttpStatus.OK);
+		return new ResponseEntity<>(answer, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/send-fax")
 	public ResponseEntity<String> sendFaxNotification(@RequestBody SendNotificationRequest sendNotificationRequest)
 			throws IOException {
 		String answer = this.notificationService.sendFaxNotification(sendNotificationRequest);
-		return new ResponseEntity<>(answer, HttpStatus.OK);
+		return new ResponseEntity<>(answer, HttpStatus.CREATED);
 	}
 
 	@GetMapping

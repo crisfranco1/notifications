@@ -30,7 +30,14 @@ public class NotificationService {
 	// Notification settings
 
 	public NotificationSetting createNotificationSetting(NotificationSetting notificationSetting) {
-		return this.notificationSettingRepository.save(notificationSetting);
+		Optional<NotificationSetting> optNotificationSetting = this
+				.getNotificationSettingByUserId(notificationSetting.getUserId());
+		if (optNotificationSetting.isEmpty()) {
+			return this.notificationSettingRepository.save(notificationSetting);
+		} else {
+			return null;
+		}
+
 	}
 
 	public List<NotificationSetting> getAllNotificationSettings() {
